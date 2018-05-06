@@ -10,6 +10,7 @@
 
     <properties>
         <spring-boot.version>2.0.1.RELEASE</spring-boot.version>
+        <!--jooq.version>3.10.6</jooq.version-->
     </properties>
 
     <parent>
@@ -27,6 +28,11 @@
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
             <version>${spring-boot.version}</version>
         </dependency>
@@ -36,16 +42,20 @@
             <version>${spring-boot.version}</version>
         </dependency>
 
-        <!-- mybatis & mysql -->
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-            <version>1.3.2</version>
-        </dependency>
+        <!-- mysql -->
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
         </dependency>
+
+        <!-- jooq -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-jooq</artifactId>
+            <version>${spring-boot.version}</version>
+        </dependency>
+
+
     </dependencies>
 
     <build>
@@ -55,6 +65,27 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <version>${spring-boot.version}</version>
             </plugin>
+
+            <plugin>
+                <groupId>org.jooq</groupId>
+                <artifactId>jooq-codegen-maven</artifactId>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.h2database</groupId>
+                        <artifactId>h2</artifactId>
+                        <version>${h2.version}</version>
+                    </dependency>
+                </dependencies>
+                <configuration>
+                    <jdbc>
+                        <driver>org.h2.Driver</driver>
+                        <url>jdbc:h2:~/blogDB</url>
+                    </jdbc>
+                    <generator>
+                    </generator>
+                </configuration>
+            </plugin>
+
         </plugins>
     </build>
 

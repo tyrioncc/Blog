@@ -5,14 +5,6 @@ spring:
     password: Root
     url: jdbc:mysql://localhost:3306/blogDB?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false
 
-mybatis:
-    type-aliases-package: com.example.domain.model
-    type-handlers-package: com.example.typehandler
-    configuration:
-        map-underscore-to-camel-case: true
-        default-fetch-size: 100
-        default-statement-timeout: 30
-
 logging:
     level:
         net:

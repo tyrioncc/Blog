@@ -2,4 +2,4 @@
 
 用到的Bootstrp模板为[Clean Blog](http://startbootstrap.com/template-overviews/clean-blog/)
 
-用的框架有Spring Boot、thymeleaf
+用到的技术有Spring Boot、thymeleaf、jooq
