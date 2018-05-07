@@ -50,6 +50,12 @@
             <version>${spring-boot.version}</version>
         </dependency>
 
+        <!-- mysql -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <scope>runtime</scope>
+        </dependency>
 
     </dependencies>
 
@@ -94,6 +100,25 @@
                         <password>Root</password>
                     </jdbc>
                     <generator>
+                        <database>
+                            <!-- The database type. The format here is:
+                                 org.util.[database].[database]Database -->
+                            <name>org.jooq.util.mysql.MySQLDatabase</name>
+
+                            <!-- The database schema (or in the absence of schema support, in your RDBMS this
+                                 can be the owner, user, database name) to be generated -->
+                            <inputSchema>blogdb</inputSchema>
+
+                            <!-- All elements that are generated from your schema
+                                 (A Java regular expression. Use the pipe to separate several expressions)
+                                 Watch out for case-sensitivity. Depending on your database, this might be important! -->
+                            <includes>.*</includes>
+
+                            <!-- All elements that are excluded from your schema
+                                 (A Java regular expression. Use the pipe to separate several expressions).
+                                 Excludes match before includes, i.e. excludes have a higher priority -->
+                            <excludes></excludes>
+                        </database>
                         <target>
                             <packageName>org.jooq.example.db.mysql</packageName>
                             <directory>target/generated-sources/jooq</directory>

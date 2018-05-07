@@ -1,4 +1,4 @@
-use blogDB;
+use blogdb;
 
 drop table if exists articles;
 create table articles(
