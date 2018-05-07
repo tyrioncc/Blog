@@ -1,6 +1,5 @@
 package dev.blog;
 
-
 import org.jooq.DSLContext;
 import org.jooq.Record1;
 import org.jooq.Result;
@@ -18,7 +17,6 @@ import static org.jooq.impl.DSL.table;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-@Component
 public class JooqExample
 {
     @Autowired

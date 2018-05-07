@@ -1,4 +1,4 @@
-package dev.blog.domain;
+package dev.blog.dao;
 
 import java.io.Serializable;
 import java.sql.Timestamp;

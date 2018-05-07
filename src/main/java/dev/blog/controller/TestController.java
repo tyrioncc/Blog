@@ -1,6 +1,6 @@
 package dev.blog.controller;
 
-import dev.blog.domain.PostReview;
+import dev.blog.dao.PostReview;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;

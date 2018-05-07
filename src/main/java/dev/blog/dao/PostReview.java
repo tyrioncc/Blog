@@ -1,4 +1,4 @@
-package dev.blog.domain;
+package dev.blog.dao;
 
 public class PostReview {
     private String postTitle;

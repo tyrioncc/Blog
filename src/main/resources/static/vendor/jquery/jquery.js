@@ -2933,10 +2933,10 @@ var rootjQuery,
 				match = rquickExpr.exec( selector );
 			}
 
-			// Match html or make sure no context is specified for #id
+			// Match blog or make sure no context is specified for #id
 			if ( match && ( match[ 1 ] || !context ) ) {
 
-				// HANDLE: $(html) -> $(array)
+				// HANDLE: $(blog) -> $(array)
 				if ( match[ 1 ] ) {
 					context = context instanceof jQuery ? context[ 0 ] : context;
 
@@ -2948,7 +2948,7 @@ var rootjQuery,
 						true
 					) );
 
-					// HANDLE: $(html, props)
+					// HANDLE: $(blog, props)
 					if ( rsingleTag.test( match[ 1 ] ) && jQuery.isPlainObject( context ) ) {
 						for ( match in context ) {
 
@@ -4759,11 +4759,11 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 				// push.apply(_, arraylike) throws on ancient WebKit
 				jQuery.merge( nodes, elem.nodeType ? [ elem ] : elem );
 
-			// Convert non-html into a text node
+			// Convert non-blog into a text node
 			} else if ( !rhtml.test( elem ) ) {
 				nodes.push( context.createTextNode( elem ) );
 
-			// Convert html into DOM nodes
+			// Convert blog into DOM nodes
 			} else {
 				tmp = tmp || fragment.appendChild( context.createElement( "div" ) );
 
@@ -8833,7 +8833,7 @@ jQuery.extend( {
 		accepts: {
 			"*": allTypes,
 			text: "text/plain",
-			html: "text/html",
+			html: "text/blog",
 			xml: "application/xml, text/xml",
 			json: "application/json, text/javascript"
 		},
@@ -8857,7 +8857,7 @@ jQuery.extend( {
 			// Convert anything to text
 			"* text": String,
 
-			// Text to html (true = no transformation)
+			// Text to blog (true = no transformation)
 			"text html": true,
 
 			// Evaluate text as a json expression
@@ -9045,7 +9045,7 @@ jQuery.extend( {
 		// Extract dataTypes list
 		s.dataTypes = ( s.dataType || "*" ).toLowerCase().match( rnothtmlwhite ) || [ "" ];
 
-		// A cross-domain request is in order when the origin doesn't match the current origin.
+		// A cross-dao request is in order when the origin doesn't match the current origin.
 		if ( s.crossDomain == null ) {
 			urlAnchor = document.createElement( "a" );
 
@@ -9478,7 +9478,7 @@ support.ajax = xhrSupported = !!xhrSupported;
 jQuery.ajaxTransport( function( options ) {
 	var callback, errorCallback;
 
-	// Cross domain only allowed if supported through XMLHttpRequest
+	// Cross dao only allowed if supported through XMLHttpRequest
 	if ( support.cors || xhrSupported && !options.crossDomain ) {
 		return {
 			send: function( headers, complete ) {
@@ -9506,10 +9506,10 @@ jQuery.ajaxTransport( function( options ) {
 				}
 
 				// X-Requested-With header
-				// For cross-domain requests, seeing as conditions for a preflight are
+				// For cross-dao requests, seeing as conditions for a preflight are
 				// akin to a jigsaw puzzle, we simply never set it to be sure.
 				// (it can always be set on a per-request basis or even using ajaxSetup)
-				// For same-domain requests, won't change header if already provided.
+				// For same-dao requests, won't change header if already provided.
 				if ( !options.crossDomain && !headers[ "X-Requested-With" ] ) {
 					headers[ "X-Requested-With" ] = "XMLHttpRequest";
 				}
@@ -9656,7 +9656,7 @@ jQuery.ajaxPrefilter( "script", function( s ) {
 // Bind script tag hack transport
 jQuery.ajaxTransport( "script", function( s ) {
 
-	// This transport only deals with cross domain requests
+	// This transport only deals with cross dao requests
 	if ( s.crossDomain ) {
 		var script, callback;
 		return {
@@ -9797,10 +9797,10 @@ support.createHTMLDocument = ( function() {
 } )();
 
 
-// Argument "data" should be string of html
+// Argument "data" should be string of blog
 // context (optional): If specified, the fragment will be created in this context,
 // defaults to document
-// keepScripts (optional): If true, will include scripts passed in the html string
+// keepScripts (optional): If true, will include scripts passed in the blog string
 jQuery.parseHTML = function( data, context, keepScripts ) {
 	if ( typeof data !== "string" ) {
 		return [];
@@ -10080,7 +10080,7 @@ jQuery.fn.extend( {
 	// 1) For the element inside the iframe without offsetParent, this method will return
 	//    documentElement of the parent window
 	// 2) For the hidden or detached element
-	// 3) For body or html element, i.e. in case of the html node - it will return itself
+	// 3) For body or blog element, i.e. in case of the blog node - it will return itself
 	//
 	// but those exceptions were never presented as a real life use-cases
 	// and might be considered as more preferable results.
