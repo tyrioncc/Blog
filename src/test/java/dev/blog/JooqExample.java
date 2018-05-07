@@ -11,7 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.stereotype.Component;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import static org.jooq.example.db.mysql.tables.Articles.ARTICLES;
+import static org.jooq.example.db.mysql.tables.Article.ARTICLE;
 import static org.jooq.impl.DSL.field;
 import static org.jooq.impl.DSL.table;
 
@@ -27,15 +27,16 @@ public class JooqExample
 
     private String getArticleTitle(int id) {
         Result<Record1<Object>> result =
-                create.select(field("title")).from(table("articles")).where(field("id").eq(id)).fetch();
+                create.select(field("title")).from(table("article")).where(field("id").eq(id)).fetch();
         return result.getValues(0).toString();
     }
 
     private String getArticleTitle2(int id) {
         Result<Record1<String>> result =
-                create.select(ARTICLES.TITLE).from(ARTICLES).where(ARTICLES.ID.eq(id)).fetch();
+                create.select(ARTICLE.TITLE).from(ARTICLE).where(ARTICLE.ID.eq(id)).fetch();
         return result.getValues(0).toString();
     }
+
 
 
     @Test

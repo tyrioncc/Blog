@@ -4,7 +4,8 @@ spring:
     username: root
     password: Root
     url: jdbc:mysql://localhost:3306/blogDB?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false
-
+  thymeleaf:
+    cache: false
 logging:
     level:
         net:
