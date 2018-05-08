@@ -4,8 +4,7 @@ import dev.blog.service.ArticleService;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Record1;
-import org.jooq.example.db.mysql.tables.Article;
-import org.jooq.example.db.mysql.tables.records.ArticleRecord;
+import org.jooq.example.db.mysql.tables.records.Article;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,7 +34,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public void saveArticle(Article article) {
+    public void saveArticle(org.jooq.example.db.mysql.tables.Article article) {
         create.insertInto(ARTICLE).values(article).execute();
     }
 
@@ -51,7 +50,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<ArticleRecord> getArticleList(int offset, int limit) {
+    public List<Article> getArticleList(int offset, int limit) {
         return create.selectFrom(ARTICLE).orderBy(ARTICLE.CREATE_TIME.desc()).limit(limit).offset(offset).fetch();
     }
 

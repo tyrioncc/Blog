@@ -2,12 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="zh">
 
 <body>
-    <div class="post-preview" th:each="postReview : ${postReviewList}" th:fragment="articleList">
+    <div class="post-preview" th:each="article : ${articleList}" th:fragment="articleList">
         <a href="post.html">
-            <h2 class="post-title" th:text="${postReview.postTitle}"> </h2>
-            <h3 class="post-subtitle" th:text="${postReview.postSubtitle}"> </h3>
+            <h2 class="post-title" th:text="${article.title}"> </h2>
+            <h3 class="post-subtitle" th:text="${article.description}"> </h3>
         </a>
-        <p class="post-meta" th:text="${postReview.postTime}">
+        <p class="post-meta" th:text="${article.createTime}">
             time </p>
     </div>
 </body>
