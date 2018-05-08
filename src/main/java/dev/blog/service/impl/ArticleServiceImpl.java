@@ -22,8 +22,8 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     public String getArticleTitleById(int id){
-        Result<Record1<String>> result = create.select(ARTICLE.TITLE).from(ARTICLE).where(ARTICLE.ID.eq(id)).fetch();
-        return result.getValue(0, ARTICLE.TITLE);
+        Record1<String> result = create.select(ARTICLE.TITLE).from(ARTICLE).where(ARTICLE.ID.eq(id)).fetchOne();
+        return result.value1();
     }
 
 
