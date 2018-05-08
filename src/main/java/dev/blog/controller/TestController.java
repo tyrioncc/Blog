@@ -23,7 +23,7 @@ public class TestController {
         postReviewList.add(bean);
         bean = null;
 
-        ModelAndView modelAndView = new ModelAndView("html/index");
+        ModelAndView modelAndView = new ModelAndView("blog/index");
         modelAndView.addObject("postReviewList", postReviewList);
         return modelAndView;
     }
