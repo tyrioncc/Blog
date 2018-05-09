@@ -2,6 +2,41 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="zh">
 
 <body>
+    <div class="page-part"  th:fragment="pagination">
+        <ul class="pagination" id="page"></ul>
+        <p id="pText-test"></p>
+
+        <script th:inline="javascript">
+            /*<![CDATA[*/
+            /*
+            $("#page").jqPaginator({
+                totalPages: [[${page.totalPageNum}]],
+                visiblePages: [[${page.itemNumPerPage}]],
+                currentPage: [[${page.currentPage}]],
+                first: '<li class="first"><a th:href="@{/}">首页<\/a><\/li>',
+                prev: '<li class="prev"><a th:href="@{/}""><i class="arrow arrow2"><\/i>上一页<\/a><\/li>',
+                next: '<li class="next"><a th:href="@{/}">下一页<i class="arrow arrow3"><\/i><\/a><\/li>',
+                last: '<li class="last"><a th:href="@{/}">末页<\/a><\/li>',
+                page: '<li class="page"><a th:href="@{/}">{{page}}<\/a><\/li>',
+                onPageChange: function (n) {
+                    $("#pText-test").html("当前第" + n + "页");
+                }
+            });
+            */
+            /*]]>*/
+        </script>
+
+        <script type="text/javascript">
+            $('#page').jqPaginator({
+                totalPages: 100,
+                visiblePages: 10,
+                currentPage: 1,
+                onPageChange: function (num, type) {
+                    $('#pText-test').html('当前第' + num + '页');
+                }
+            });
+        </script>
+    </div>
 
 
 </body>
