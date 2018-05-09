@@ -28,7 +28,7 @@
   <nav th:replace="blog/part/navigation :: mainNav"></nav>
 
   <!-- Page Header -->
-  <header class="masthead" style="background-image: url('img/post-bg.jpg')">
+  <header class="masthead">
     <div class="overlay"></div>
     <div class="container">
       <div class="row">
@@ -47,7 +47,7 @@
   <article>
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto" th:text="${article.content}">
+        <div class="col-lg-8 col-md-10 mx-auto" th:utext="${article.content}">
         </div>
       </div>
     </div>

@@ -1,0 +1,40 @@
+<!DOCTYPE html >
+<!--suppress ThymeleafVariablesResolveInspection-->
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<body>
+    <div th:fragment="pagination">
+        <div class="text-right">
+            <ul style="margin:0px;" class="pagination"}>
+                <li><a th:href="@{#}">首页</a></li>
+                <li th:if="${page.currentPage gt 1}"><a th:href="@{#}">上一页</a></li>
+
+                <!--总页数小于等于10-->
+                <div th:if="${(page.totalPageNum le 10) and (page.totalPageNum gt 0)}" th:remove="tag">
+                    <div th:each="pg : ${#numbers.sequence(0, page.totalPageNum - 1)}" th:remove="tag">
+                            <span th:if="${pg eq page.getNumber()}" th:remove="tag">
+                                <li class="active"><span class="current_page line_height" th:text="${pg+1}">${pageNumber}</span></li>
+                            </span>
+                        <span th:unless="${pg eq page.totalNum}" th:remove="tag">
+                                <li><a th:href="@{#}" th:text="${pg+1}"></a></li>
+                            </span>
+                    </div>
+                </div>
+
+                <!-- 总数数大于10时 -->
+                <div th:if="${page.totalPageNum gt 10}" th:remove="tag">
+                    <li th:if="${(page.currentPage - 2) gt 0}"><a th:href="@{#}" th:text="${page.currentPage - 2}"></a></li>
+                    <li th:if="${(page.currentPage - 1) gt 0}"><a th:href="@{#}" th:text="${page.currentPage - 1}"></a></li>
+                    <li class="active"><span class="current_page line_height" th:text="${page.currentPage}"></span></li>
+                    <li th:if="${page.number + 1 le page.totalPageNum}"><a th:href="@{#}" th:text="${page.currentPage + 1}"></a></li>
+                    <li th:if="${page.number + 2 le page.totalPageNum}"><a th:href="@{#}" th:text="${page.currentPage + 2}"></a></li>
+                </div>
+
+
+                <li th:if="${page.currentPage lt page.totalPageNum}"><a th:href="@{#}">下一页</a></li>
+                <li><a href="#" th:href="">尾页</a></li>
+                <li><span th:utext="'共'+${page.totalPageNum}+'页 / '+${page.totalNum}+' 条'"></span></li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>

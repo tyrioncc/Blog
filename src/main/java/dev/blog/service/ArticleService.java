@@ -24,7 +24,7 @@ public interface ArticleService {
      * 获取文章数量
      * @return 文章数量
      */
-    int getArticleCount();
+    int getArticleNum();
 
 
     /**
@@ -47,10 +47,16 @@ public interface ArticleService {
     void addArticleCount(int id);
 
     /**
+     * 获取可显示的文章列表
+     * @param offset 偏移量
+     * @param limit 文章数量
+     */
+    List<Article> getAvaliableArticleList(int offset, int limit);
+
+    /**
      * 获取文章列表
      * @param offset 偏移量
      * @param limit 文章数量
      */
     List<Article> getArticleList(int offset, int limit);
-
 }

@@ -36,7 +36,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public int getArticleCount() {
+    public int getArticleNum() {
         return create.fetchCount(create.selectFrom(ARTICLE));
     }
 
@@ -54,6 +54,11 @@ public class ArticleServiceImpl implements ArticleService {
     public void addArticleCount(int id) {
         create.update(ARTICLE).set(ARTICLE.SHOW_COUNT, ARTICLE.SHOW_COUNT.add(1))
                 .where(ARTICLE.ID.eq(id)).execute();
+    }
+
+    @Override
+    public List<Article> getAvaliableArticleList(int offset, int limit) {
+        return create.selectFrom(ARTICLE).where(ARTICLE.STATUS.eq(0)).orderBy(ARTICLE.CREATE_TIME.desc()).limit(limit).offset(offset).fetch();
     }
 
     @Override
