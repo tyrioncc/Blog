@@ -1,10 +1,11 @@
 <!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection-->
 <html xmlns:th="http://www.thymeleaf.org" lang="zh">
 
 <body>
     <div class="post-preview" th:each="article : ${articleList}" th:fragment="articleList">
-        <a href="post.html">
-            <h2 class="post-title" th:text="${article.title}"> </h2>
+        <a th:href="@{'/article/'+${article.id}}">
+            <h2 class="post-title" th:text="${article.title}"> </h2>>
             <h3 class="post-subtitle" th:text="${article.description}"> </h3>
         </a>
         <p class="post-meta" th:text="${article.createTime}">

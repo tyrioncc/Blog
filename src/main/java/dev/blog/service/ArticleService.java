@@ -6,12 +6,18 @@ import java.util.List;
 
 public interface ArticleService {
     /**
+     * 通过id获取文章
+     * @param id 文章id
+     * @return 标题
+     */
+    Article getArticleById(int id);
+
+    /**
      * 通过id获取文章标题
      * @param id 文章id
      * @return 标题
      */
     String getArticleTitleById(int id);
-
 
 
     /**

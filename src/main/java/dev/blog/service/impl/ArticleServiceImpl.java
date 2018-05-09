@@ -23,14 +23,21 @@ public class ArticleServiceImpl implements ArticleService {
         this.create = create;
     }
 
+    @Override
+    public Article getArticleById(int id){
+        Article  result = create.selectFrom(ARTICLE).where(ARTICLE.ID.eq(id)).fetchOne();
+        return result;
+    }
+
+    @Override
     public String getArticleTitleById(int id){
-        Record1<String> result = create.select(ARTICLE.TITLE).from(ARTICLE).where(ARTICLE.ID.eq(id)).fetchOne();
-        return result.value1();
+        Article  result = getArticleById(id);
+        return result.getTitle();
     }
 
     @Override
     public int getArticleCount() {
-        return 0;
+        return create.fetchCount(create.selectFrom(ARTICLE));
     }
 
     @Override
