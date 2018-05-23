@@ -8,7 +8,7 @@ public class Page {
 
     private int totalNum;
 
-    public static final int itemNumPerPage = 6;
+    public static final int itemNumPerPage = 8;
 
     public int getTotalPageNum() {
         return totalPageNum;
@@ -37,6 +37,9 @@ public class Page {
     public Page(int currentPage, int totalNum) {
         this.currentPage = currentPage;
         this.totalNum = totalNum;
-        totalPageNum = totalNum / itemNumPerPage + 1;
+        totalPageNum = totalNum / itemNumPerPage;
+        int k = totalNum % itemNumPerPage;
+        if(k > 0)
+            totalPageNum++;
     }
 }

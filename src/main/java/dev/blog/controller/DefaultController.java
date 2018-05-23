@@ -37,7 +37,7 @@ public class DefaultController {
         return "blog/article";
     }
 
-    @RequestMapping("/page/{id}")
+    @RequestMapping("/page/{pageNum}")
     public String page(Model model, @PathVariable int pageNum){
         List<Article> list = articleService.getAvaliableArticleList((pageNum - 1) * Page.itemNumPerPage, Page.itemNumPerPage);
         Page page = new Page(pageNum, articleService.getArticleNum());
