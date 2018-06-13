@@ -45,4 +45,9 @@ public class DefaultController {
         model.addAttribute("page", page);
         return "blog/index";
     }
+
+    @RequestMapping("/home")
+    public String admin(Model model){
+        return "admin/starter";
+    }
 }

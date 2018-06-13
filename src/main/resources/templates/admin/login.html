@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+
+    <head th:replace="blog/part/head :: head"> </head>
+    <head>
+        <script type="text/javascript" src="/vendor/jquery/jquery.min.js"></script>
+        <script type="text/javascript" src="/js/login.js"></script>
+    </head>>
+
+<body class="login">
+    <form method="post" action="/login">
+        <h2>用户名：</h2>
+        <input type="text" id="username" name="username"  class="txt_input" placeholder="请输入用户名" required>
+        <h2>密码：</h2>
+        <input type="password" name="password" id="password" class="txt_input" placeholder="请输入密码" required>
+
+        <input type="submit" class="submit" name="button" id="login-button" value="登录">
+    </form>
+
+</body>
+
+
+</html>
