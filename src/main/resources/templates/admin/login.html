@@ -2,25 +2,25 @@
 <html xmlns:th="http://www.thymeleaf.org" lang="zh">
 <head th:replace="admin/part/head :: head"> </head></head>
 
-<body class="hold-transition login-page">
-<div class="login-box">
+<body class="hold-transition login-page" onload='document.f.username.focus();'>
+<div th:fragment="content" class="login-box">
     <!-- /.login-logo -->
     <div class="login-box-body">
-        <p class="login-box-msg">Sign in to start your session</p>
+        <p class="login-box-msg">登录</p>
 
-        <form action="/home" method="post">
+        <form name="f" th:action="@{/login}" method="post">
             <div class="form-group has-feedback">
-                <input type="email" class="form-control" placeholder="Email">
+                <input type="text" name="username" class="form-control" placeholder="用户名">
                 <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
             </div>
             <div class="form-group has-feedback">
-                <input type="password" class="form-control" placeholder="Password">
+                <input type="password" name="password" class="form-control" placeholder="密码">
                 <span class="glyphicon glyphicon-lock form-control-feedback"></span>
             </div>
             <div class="row">
                 <!-- /.col -->
                 <div class="col-xs-4">
-                    <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
+                    <button type="submit" name="submit" class="btn btn-primary btn-block btn-flat">登录</button>
                 </div>
                 <!-- /.col -->
             </div>
@@ -32,6 +32,13 @@
     <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->
+
+<div th:if="${param.error}" class="alert alert-error">
+    Invalid username and password.
+</div>
+<div th:if="${param.logout}" class="alert alert-success">
+    You have been logged out.
+</div>
 
 <!-- jQuery -->
 <script src="/vendor/jquery/jquery.min.js"></script>
