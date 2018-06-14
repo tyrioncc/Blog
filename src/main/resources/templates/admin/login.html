@@ -1,23 +1,52 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="zh">
+<head th:replace="admin/part/head :: head"> </head></head>
 
-    <head th:replace="blog/part/head :: head"> </head>
-    <head>
-        <script type="text/javascript" src="/vendor/jquery/jquery.min.js"></script>
-        <script type="text/javascript" src="/js/login.js"></script>
-    </head>>
+<body class="hold-transition login-page">
+<div class="login-box">
+    <!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">Sign in to start your session</p>
 
-<body class="login">
-    <form method="post" action="/login">
-        <h2>用户名：</h2>
-        <input type="text" id="username" name="username"  class="txt_input" placeholder="请输入用户名" required>
-        <h2>密码：</h2>
-        <input type="password" name="password" id="password" class="txt_input" placeholder="请输入密码" required>
+        <form action="/home" method="post">
+            <div class="form-group has-feedback">
+                <input type="email" class="form-control" placeholder="Email">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" class="form-control" placeholder="Password">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <!-- /.col -->
+                <div class="col-xs-4">
+                    <button type="submit" class="btn btn-primary btn-block btn-flat">登录</button>
+                </div>
+                <!-- /.col -->
+            </div>
+        </form>
 
-        <input type="submit" class="submit" name="button" id="login-button" value="登录">
-    </form>
+        <!-- /.social-auth-links -->
 
+    </div>
+    <!-- /.login-box-body -->
+</div>
+<!-- /.login-box -->
+
+<!-- jQuery -->
+<script src="/vendor/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+<!-- iCheck -->
+<script src="/vendor/icheck/icheck.min.js"></script>
+<script>
+    $(function () {
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-blue',
+            radioClass: 'iradio_square-blue',
+            increaseArea: '20%' /* optional */
+        });
+    });
+</script>
 </body>
-
-
 </html>

@@ -50,4 +50,9 @@ public class DefaultController {
     public String admin(Model model){
         return "admin/starter";
     }
+
+    @RequestMapping("/login")
+    public String login(Model model){
+        return "admin/login";
+    }
 }
