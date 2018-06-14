@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<!--suppress ThymeleafVariablesResolveInspection-->
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
+
+<body>
+<div th:fragment="articleList">
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">文章列表</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        <table id="articleTable" class="table table-bordered table-striped">
+                            <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>标题</th>
+                                <th>操作</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <div th:each="article : ${articleList}">
+                                <tr>
+                                    <td th:text="${article.id}"></td>
+                                    <td th:text="${article.title}"></td>
+                                    <td href="#">编辑</td>
+                                </tr>
+                            </div>
+                            <!--
+                            <tr>
+                                <td>Trident</td>
+                                <td>Internet
+                                    Explorer 4.0
+                                </td>
+                                <td>Win 95+</td>
+                                <td> 4</td>
+                                <td>X</td>
+                            </tr>
+                            -->
+                            </tbody>
+                            <tfoot>
+                            <tr>
+                                <th>ID</th>
+                                <th>标题</th>
+                                <th>操作</th>
+                            </tr>
+                            </tfoot>
+                        </table>
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+
+
+</div>
+
+
+<div th:fragment="articleListScript">
+    <!-- jQuery -->
+    <script src="/vendor/jquery/jquery.min.js"></script>
+    <!-- Bootstrap  -->
+    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <!-- DataTables -->
+    <script src="/vendor/jquery/jquery.dataTables.min.js"></script>
+    <script src="/vendor/bootstrap/js/dataTables.bootstrap.min.js"></script>
+    <!-- SlimScroll -->
+    <script src="/vendor/jquery/jquery.slimscroll.min.js"></script>
+    <!-- FastClick -->
+    <script src="/vendor/plugins/fastclick.js"></script>
+    <!-- AdminLTE App -->
+    <script src="/js/adminlte.min.js"></script>
+    <!-- page script -->
+    <script>
+        $(function () {
+            $('#articleTable').DataTable({
+                'paging'      : true,
+                'lengthChange': false,
+                'searching'   : false,
+                'ordering'    : true,
+                'info'        : true,
+                'autoWidth'   : false
+            })
+        })
+    </script>
+
+</div>
+</body>
+</html>

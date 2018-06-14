@@ -30,12 +30,6 @@ public class DefaultController {
         return "blog/index";
     }
 
-    @RequestMapping("/article/{id}")
-    public String article(Model model, @PathVariable int id){
-        Article article = articleService.getArticleById(id);
-        model.addAttribute("article", article);
-        return "blog/article";
-    }
 
     @RequestMapping("/page/{pageNum}")
     public String page(Model model, @PathVariable int pageNum){
@@ -48,11 +42,14 @@ public class DefaultController {
 
     @RequestMapping("/home")
     public String admin(Model model){
-        return "admin/starter";
+        List<Article> list = articleService.getAvaliableArticleList(0, Integer.MAX_VALUE);
+        model.addAttribute("articleList", list);
+        return "admin/home";
     }
 
     @RequestMapping("/login")
     public String login(Model model){
         return "admin/login";
     }
+
 }
