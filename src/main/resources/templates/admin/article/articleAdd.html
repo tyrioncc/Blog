@@ -1,7 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html xmlns:th="http://www.thymeleaf.org" lang="zh">
 <head>
     <meta charset="utf-8" />
+    <meta name="_csrf" th:content="${_csrf.token}"/>
+    <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
     <title>MarkDown编辑器</title>
     <link rel="stylesheet" href="/admin/css/style.css" />
     <link rel="stylesheet" href="/admin/css/editormd.css" />
@@ -9,11 +11,11 @@
 </head>
 <body>
 <div id="layout">
-    <p>标题：</p>
-    <input type="text" id="articleTitle">
+    <p align="center">标题：</p>
+    <input align="center" type="text" id="articleTitle">
     <br/>
-    <p>简介</p>
-    <input type="text" id="articleDes">
+    <p align="center">简介</p>
+    <input align="center" type="text" id="articleDes">
 
     <div id="editorWindow">
         <textarea style="display:none;" id="articleText">[TOC]
@@ -75,10 +77,11 @@
         */
     });
 </script>
+<script src="/js/articleAdd.js"></script>
 
 <button id="save" type="button">提交</button>
 
+
 </body>
-<script src="/js/articleAdd.js"/>
 
 </html>

@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import static org.jooq.example.db.mysql.tables.Article.ARTICLE;
@@ -41,8 +42,15 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public void saveArticle(Article article) {
+    public void addArticle(Article article) {
         create.insertInto(ARTICLE).values(article).execute();
+    }
+
+    @Override
+    public void saveArticle(Article article) {
+        create.update(ARTICLE).set(ARTICLE.TITLE, article.getTitle()).set(ARTICLE.DESCRIPTION, article.getDescription())
+                .set(ARTICLE.CONTENT, article.getContent()).set(ARTICLE.UPDATE_TIME, article.getUpdateTime())
+                .where(ARTICLE.ID.eq(article.getId())).execute();
     }
 
     @Override

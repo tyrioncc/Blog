@@ -28,6 +28,12 @@ public interface ArticleService {
 
 
     /**
+     * 添加文章
+     * @param article 文章
+     */
+    void addArticle(Article article);
+
+    /**
      * 保存文章
      * @param article 文章
      */

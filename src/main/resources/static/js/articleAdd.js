@@ -1,13 +1,21 @@
 $(document).ready(function() {
-    $("#save").click(save());
+    $("#save").click(function () {
+        save();
+    });
 }
 );
 
+var token = $("meta[name='_csrf']").attr("content");
+var header = $("meta[name='_csrf_header']").attr("content");
+$(document).ajaxSend(function(e, xhr, options) {
+    xhr.setRequestHeader(header, token);
+});
+
 function save() {
-    console.log("save article");
- ;   var title = $("#articleTitle").val();
+    var title = $("#articleTitle").val();
     var content = $("#articleText").val();
     var description = $("#articleDes").val();
+    var timestamp = Date.parse(new Date());
 
     if(title == ""){
         alert("请输入标题");
@@ -17,21 +25,15 @@ function save() {
     var article = {
         title: title,
         content:content,
-        description:description
+        description:description,
+        createTime:timestamp
     };
 
     $.ajax({
         type: "POST",
         url: '/home/saveArticle',
         data: JSON.stringify(article),
-        dataType:'json',
-        contentType:'application/json;charset=UTF-8',
         success:function (result) {
-            alert("保存成功");
-            console.log(result);
-        },
-        error:function (result) {
-            alert("出错啦");
             console.log(result);
         }
     });
