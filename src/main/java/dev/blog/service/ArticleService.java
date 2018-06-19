@@ -31,7 +31,7 @@ public interface ArticleService {
      * 保存文章
      * @param article 文章
      */
-    void saveArticle(org.jooq.example.db.mysql.tables.Article article);
+    void saveArticle(Article article);
 
     /**
      * 更新文章状态

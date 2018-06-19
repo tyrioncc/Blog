@@ -9,11 +9,14 @@
 </head>
 <body>
 <div id="layout">
-    <header>
-        <h1>Simple example</h1>
-    </header>
-    <div id="test-editormd">
-                <textarea style="display:none;">[TOC]
+    <p>标题：</p>
+    <input type="text" id="articleTitle">
+    <br/>
+    <p>简介</p>
+    <input type="text" id="articleDes">
+
+    <div id="editorWindow">
+        <textarea style="display:none;" id="articleText">[TOC]
 
 #### Disabled options
 
@@ -54,7 +57,7 @@
     var testEditor;
 
     $(function() {
-        testEditor = editormd("test-editormd", {
+        testEditor = editormd("editorWindow", {
             width   : "90%",
             height  : 640,
             syncScrolling : "single",
@@ -72,5 +75,10 @@
         */
     });
 </script>
+
+<button id="save" type="button">提交</button>
+
 </body>
+<script src="/js/articleAdd.js"/>
+
 </html>

@@ -41,7 +41,7 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public void saveArticle(org.jooq.example.db.mysql.tables.Article article) {
+    public void saveArticle(Article article) {
         create.insertInto(ARTICLE).values(article).execute();
     }
 
