@@ -15,7 +15,9 @@ function save() {
     var title = $("#articleTitle").val();
     var content = $("#articleText").val();
     var description = $("#articleDes").val();
-    var createTime = Date.parse(new Date());
+    var d = new Date()
+    var createTime = [d.getFullYear(), d.getMonth()+1,d.getDate()].join('-')+' '+
+            [d.getHours(),d.getMinutes(), d.getSeconds()].join(':');
 
     if(title == ""){
         alert("请输入标题");
@@ -27,14 +29,17 @@ function save() {
         "content":content,
         "description":description,
         "createTime":createTime
-        }
+    };
+
+    //console.log(article);
+    //console.log(JSON.stringify(article));
 
     $.ajax({
         type: "POST",
-        url: '/home/saveArticle',
-        dataType:"json",
+        url: "/home/saveArticle",
         data: JSON.stringify(article),
-        contentType:"application/json",
+        dataType:"JSON",
+        contentType: "application/json",
         success:function (result) {
             alert("收到响应");
             console.log(result);
