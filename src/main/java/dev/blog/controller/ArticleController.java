@@ -30,7 +30,7 @@ public class ArticleController {
 
     @RequestMapping("/home/articleAdd")
     public String ArticleAdd(Model model){
-        return "/admin/article/articleAdd";
+        return "admin/article/articleAdd";
     }
 
     @RequestMapping(value = "home/saveArticle", method = RequestMethod.POST, consumes = "application/json")
