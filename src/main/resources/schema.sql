@@ -4,7 +4,7 @@
 drop table if exists `article`;
 create table `article`(
   `id` int(11) not null auto_increment,
-  `category_id` int(11) not null comment '分类Id',
+  `category_id` int(11) not null default '0' comment '分类Id',
   `title` varchar(40) not null comment '标题',
   `content` longtext not null comment '内容',
   `description` varchar(500) default null comment '文章简介',

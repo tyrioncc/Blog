@@ -1,6 +1,6 @@
 package dev.blog.service;
 
-import org.jooq.example.db.mysql.tables.records.Article;
+import org.jooq.example.db.mysql.tables.records.ArticleRecord;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ public interface ArticleService {
      * @param id 文章id
      * @return 标题
      */
-    Article getArticleById(int id);
+    ArticleRecord getArticleById(int id);
 
     /**
      * 通过id获取文章标题
@@ -31,13 +31,13 @@ public interface ArticleService {
      * 添加文章
      * @param article 文章
      */
-    void addArticle(Article article);
+    void addArticle(ArticleRecord article);
 
     /**
      * 保存文章
      * @param article 文章
      */
-    void saveArticle(Article article);
+    void saveArticle(ArticleRecord article);
 
     /**
      * 更新文章状态
@@ -57,12 +57,12 @@ public interface ArticleService {
      * @param offset 偏移量
      * @param limit 文章数量
      */
-    List<Article> getAvaliableArticleList(int offset, int limit);
+    List<ArticleRecord> getAvaliableArticleList(int offset, int limit);
 
     /**
      * 获取文章列表
      * @param offset 偏移量
      * @param limit 文章数量
      */
-    List<Article> getArticleList(int offset, int limit);
+    List<ArticleRecord> getArticleList(int offset, int limit);
 }

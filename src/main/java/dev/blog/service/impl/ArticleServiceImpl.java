@@ -4,7 +4,7 @@ import dev.blog.service.ArticleService;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Record1;
-import org.jooq.example.db.mysql.tables.records.Article;
+import org.jooq.example.db.mysql.tables.records.ArticleRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -25,14 +25,14 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public Article getArticleById(int id){
-        Article  result = create.selectFrom(ARTICLE).where(ARTICLE.ID.eq(id)).fetchOne();
+    public ArticleRecord getArticleById(int id){
+        ArticleRecord  result = create.selectFrom(ARTICLE).where(ARTICLE.ID.eq(id)).fetchOne();
         return result;
     }
 
     @Override
     public String getArticleTitleById(int id){
-        Article  result = getArticleById(id);
+        ArticleRecord  result = getArticleById(id);
         return result.getTitle();
     }
 
@@ -42,12 +42,14 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public void addArticle(Article article) {
-        create.insertInto(ARTICLE).values(article).execute();
+    public void addArticle(ArticleRecord article) {
+        create.insertInto(ARTICLE, ARTICLE.TITLE, ARTICLE.DESCRIPTION, ARTICLE.CONTENT, ARTICLE.CREATE_TIME)
+                .values(article.getTitle(), article.getDescription(), article.getContent(), article.getCreateTime())
+                .execute();
     }
 
     @Override
-    public void saveArticle(Article article) {
+    public void saveArticle(ArticleRecord article) {
         create.update(ARTICLE).set(ARTICLE.TITLE, article.getTitle()).set(ARTICLE.DESCRIPTION, article.getDescription())
                 .set(ARTICLE.CONTENT, article.getContent()).set(ARTICLE.UPDATE_TIME, article.getUpdateTime())
                 .where(ARTICLE.ID.eq(article.getId())).execute();
@@ -65,12 +67,12 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public List<Article> getAvaliableArticleList(int offset, int limit) {
+    public List<ArticleRecord> getAvaliableArticleList(int offset, int limit) {
         return create.selectFrom(ARTICLE).where(ARTICLE.STATUS.eq(0)).orderBy(ARTICLE.CREATE_TIME.desc()).limit(limit).offset(offset).fetch();
     }
 
     @Override
-    public List<Article> getArticleList(int offset, int limit) {
+    public List<ArticleRecord> getArticleList(int offset, int limit) {
         return create.selectFrom(ARTICLE).orderBy(ARTICLE.CREATE_TIME.desc()).limit(limit).offset(offset).fetch();
     }
 

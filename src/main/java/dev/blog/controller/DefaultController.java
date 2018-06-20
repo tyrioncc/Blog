@@ -2,7 +2,7 @@ package dev.blog.controller;
 
 import dev.blog.dao.Page;
 import dev.blog.service.ArticleService;
-import org.jooq.example.db.mysql.tables.records.Article;
+import org.jooq.example.db.mysql.tables.records.ArticleRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,7 +23,7 @@ public class DefaultController {
 
     @RequestMapping("/")
     public String home(Model model){
-        List<Article> list = articleService.getAvaliableArticleList(0, Page.itemNumPerPage);
+        List<ArticleRecord> list = articleService.getAvaliableArticleList(0, Page.itemNumPerPage);
         Page page = new Page(1, articleService.getArticleNum());
         model.addAttribute("articleList", list);
         model.addAttribute("page", page);
@@ -33,7 +33,7 @@ public class DefaultController {
 
     @RequestMapping("/page/{pageNum}")
     public String page(Model model, @PathVariable int pageNum){
-        List<Article> list = articleService.getAvaliableArticleList((pageNum - 1) * Page.itemNumPerPage, Page.itemNumPerPage);
+        List<ArticleRecord> list = articleService.getAvaliableArticleList((pageNum - 1) * Page.itemNumPerPage, Page.itemNumPerPage);
         Page page = new Page(pageNum, articleService.getArticleNum());
         model.addAttribute("articleList", list);
         model.addAttribute("page", page);
@@ -42,7 +42,7 @@ public class DefaultController {
 
     @RequestMapping("/home")
     public String admin(Model model){
-        List<Article> list = articleService.getAvaliableArticleList(0, Integer.MAX_VALUE);
+        List<ArticleRecord> list = articleService.getAvaliableArticleList(0, Integer.MAX_VALUE);
         model.addAttribute("articleList", list);
         return "admin/home";
     }

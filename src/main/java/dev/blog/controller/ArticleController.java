@@ -1,8 +1,9 @@
 package dev.blog.controller;
 
 import dev.blog.service.ArticleService;
-import org.apache.logging.log4j.MarkerManager;
-import org.jooq.example.db.mysql.tables.records.Article;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.jooq.example.db.mysql.tables.records.ArticleRecord;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,15 +14,14 @@ import java.sql.Timestamp;
 
 @Controller
 public class ArticleController {
-
-
+    Logger logger = LogManager.getLogger();
 
     @Autowired
     ArticleService articleService;
 
     @RequestMapping("/article/{id}")
     public String Article(Model model, @PathVariable int id){
-        Article article = articleService.getArticleById(id);
+        ArticleRecord article = articleService.getArticleById(id);
         model.addAttribute("article", article);
         return "blog/article";
     }
@@ -31,28 +31,33 @@ public class ArticleController {
         return "/admin/article/articleAdd";
     }
 
-    @RequestMapping(value = "/home/saveArticle", method = RequestMethod.POST)
+    @RequestMapping(value = "/home/saveArticle", method = RequestMethod.POST, consumes="application/json")
     @ResponseBody
-    public JSONObject SaveArticle(Model model, @RequestBody JSONObject info){
-        JSONObject jsonObject = new JSONObject();
-
+    public String SaveArticle(@RequestBody JSONObject info){
+        logger.debug("SaveArticle");
+        logger.debug(info);
+        String s;
         try {
-            Article article = new Article();
+            ArticleRecord article = new ArticleRecord();
             article.setTitle(info.getString("title"));
             article.setDescription(info.getString("description"));
             article.setCreateTime(Timestamp.valueOf(info.getString("createTime")));
             article.setContent(info.getString("content"));
-
             articleService.addArticle(article);
 
-            jsonObject.put("message", "保存成功");
-            jsonObject.put("status", "success");
+            System.out.println("System.out.println");
+
+            s = "{" +
+                    "\"message\":\"请求成功\"" +
+                    "}";
         }
         catch (Exception e){
-            jsonObject.put("message", e.getMessage());
-            jsonObject.put("status", "error");
-
+           s = "{" +
+                    "\"message\":\"" + e.getMessage() + "\"," +
+                    "\"cause\":\"" + e.getCause() + "\"" +
+            "}";
+           e.printStackTrace();
         }
-        return jsonObject;
+        return s;
     }
 }
