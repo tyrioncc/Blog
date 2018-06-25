@@ -17,7 +17,7 @@
   <link th:href="@{../vendor/font-awesome/css/font-awesome.min.css}" rel="stylesheet" type="text/css">
   <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
   <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
-
+  <link rel="stylesheet" th:href="@{../vendor/editormd/editormd.preview.css}" />
   <!-- Custom styles for this template -->
   <link th:href="@{../css/clean-blog.min.css}" rel="stylesheet">
 </head>
@@ -47,8 +47,8 @@
   <article>
     <div class="container">
       <div class="row">
-        <div id = "articleContent">
-          <textarea class="col-lg-8 col-md-10 mx-auto" th:field="${article.content}"></textarea>
+        <div id = "articleContent" class="col-lg-8 col-md-10 mx-auto">
+          <textarea id="append-test" style="display:none;" th:field="${article.content}"></textarea>
         </div>
       </div>
     </div>
