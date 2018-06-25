@@ -47,7 +47,8 @@
   <article>
     <div class="container">
       <div class="row">
-        <div class="col-lg-8 col-md-10 mx-auto" th:utext="${article.content}">
+        <div id = "articleContent">
+          <textarea class="col-lg-8 col-md-10 mx-auto" th:field="${article.content}"></textarea>
         </div>
       </div>
     </div>
@@ -64,6 +65,16 @@
 
   <!-- Custom scripts for this template -->
   <script th:src="@{../js/clean-blog.min.js}"></script>
+  <script th:src="@{../vendor/editormd/editormd.min.js}"></script>
+  <script th:src="@{../js/MDToHtml.js}"></script>
+
+  <script th:src="@{../lib/marked.min.js}"></script>
+  <script th:src="@{../lib/prettify.min.js}"></script>
+  <script th:src="@{../lib/raphael.min.js}"></script>
+  <script th:src="@{../lib/underscore.min.js}"></script>
+  <script th:src="@{../lib/sequence-diagram.min.js}"></script>
+  <script th:src="@{../lib/flowchart.min.js}"></script>
+  <script th:src="@{../lib/jquery.flowchart.min.js}"></script>
 
 </body>
 
