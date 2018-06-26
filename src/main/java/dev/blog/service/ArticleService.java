@@ -36,8 +36,9 @@ public interface ArticleService {
     /**
      * 保存文章
      * @param article 文章
+     * @param id id
      */
-    void saveArticle(ArticleRecord article);
+    void saveArticleById(ArticleRecord article, int id);
 
     /**
      * 更新文章状态
@@ -65,4 +66,11 @@ public interface ArticleService {
      * @param limit 文章数量
      */
     List<ArticleRecord> getArticleList(int offset, int limit);
+
+
+    /**
+     * 删除文章
+     * @param id 文章id
+     */
+    void deleteArticleById(int id);
 }

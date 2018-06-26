@@ -19,7 +19,8 @@
                             <tr>
                                 <th>ID</th>
                                 <th>标题</th>
-                                <th>操作</th>
+                                <th>编辑</th>
+                                <th>删除</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -27,7 +28,20 @@
                                 <tr>
                                     <td th:text="${article.id}"></td>
                                     <td th:text="${article.title}"></td>
-                                    <td href="#">编辑</td>
+                                    <td>
+                                        <form th:action="@{/home/articleEdit}"  method="post">
+                                            <input type="hidden" name="id" th:value="${article.id}" />
+                                            <input type="submit" value="编辑"/>
+                                        </form>
+                                    </td>
+                                    <td>
+                                        <form th:action="@{/home/articleDelete}"  method="post">
+                                            <input type="hidden" name="id" th:value="${article.id}" />
+                                            <input type="submit" value="删除"/>
+                                        </form>
+                                    </td>
+
+                                    </td>
                                 </tr>
                             </div>
                             <!--
@@ -46,7 +60,8 @@
                             <tr>
                                 <th>ID</th>
                                 <th>标题</th>
-                                <th>操作</th>
+                                <th>编辑</th>
+                                <th>删除</th>
                             </tr>
                             </tfoot>
                         </table>

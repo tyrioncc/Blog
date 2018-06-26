@@ -1,5 +1,5 @@
 $(function() {
-    console.log("md to html");
+    //console.log("md to html");
     var editormdView;
 
     editormdView = editormd.markdownToHTML("articleContent", {

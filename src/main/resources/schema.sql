@@ -11,7 +11,7 @@ create table `article`(
   `status` int(11) not null default '0' comment '状态 0：正常  1：不可用',
   `author` varchar(15) not null default 'Yui_tycc' comment '作者',
   `create_time` datetime not null comment '发表时间',
-  `update_time` datetime default null comment '发表时间',
+  `update_time` datetime default null comment '修改时间',
   `show_count` int(11) not null DEFAULT '0' comment '浏览量',
   primary key(`id`)
 )engine=Innodb, Auto_increment = 100, default charset=utf8 comment '文章表';

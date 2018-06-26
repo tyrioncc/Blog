@@ -1,6 +1,9 @@
 $(document).ready(function() {
     $("#save").click(function () {
-        save();
+        saveButton();
+    });
+    $("#saveAndExit").click(function () {
+        saveAndExit();
     });
 }
 );
@@ -11,12 +14,13 @@ $(document).ajaxSend(function(e, xhr, options) {
     xhr.setRequestHeader(header, token);
 });
 
-function save() {
+function saveButton() {
+    var id = $("#articleId").val();
     var title = $("#articleTitle").val();
     var content = $("#articleText").val();
     var description = $("#articleDes").val();
     var d = new Date()
-    var createTime = [d.getFullYear(), d.getMonth()+1,d.getDate()].join('-')+' '+
+    var updateTime = [d.getFullYear(), d.getMonth()+1,d.getDate()].join('-')+' '+
             [d.getHours(),d.getMinutes(), d.getSeconds()].join(':');
 
     if(title == ""){
@@ -28,12 +32,21 @@ function save() {
         "title":title,
         "content":content,
         "description":description,
-        "createTime":createTime
+        "updateTime":updateTime
     };
 
     //console.log(article);
     //console.log(JSON.stringify(article));
 
+    if (id !== -1) {
+        saveAndAdd(article);
+    }
+    else{
+
+    }
+}
+
+function saveAndAdd(article, select) {
     $.ajax({
         type: "POST",
         url: "/home/saveArticle",
@@ -41,13 +54,13 @@ function save() {
         dataType:"JSON",
         contentType: "application/json",
         success:function (result) {
-            alert("收到响应");
-            console.log(result);
+            alert("保存成功");
+            //console.log(result);
         },
         error:function(e) {
-        //出错时回调该函数
-            alert("error");
-            console.log("ERROR : ", e);
+            //出错时回调该函数
+            alert("出错了");
+            //console.log("ERROR : ", e);
         }
     });
 }

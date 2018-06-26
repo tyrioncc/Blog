@@ -49,10 +49,10 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public void saveArticle(ArticleRecord article) {
+    public void saveArticleById(ArticleRecord article, int id){
         create.update(ARTICLE).set(ARTICLE.TITLE, article.getTitle()).set(ARTICLE.DESCRIPTION, article.getDescription())
                 .set(ARTICLE.CONTENT, article.getContent()).set(ARTICLE.UPDATE_TIME, article.getUpdateTime())
-                .where(ARTICLE.ID.eq(article.getId())).execute();
+                .where(ARTICLE.ID.eq(id)).execute();
     }
 
     @Override
@@ -76,5 +76,9 @@ public class ArticleServiceImpl implements ArticleService {
         return create.selectFrom(ARTICLE).orderBy(ARTICLE.CREATE_TIME.desc()).limit(limit).offset(offset).fetch();
     }
 
+    @Override
+    public void deleteArticleById(int id){
+        create.delete(ARTICLE).where(ARTICLE.ID.eq(id));
+    }
 
 }

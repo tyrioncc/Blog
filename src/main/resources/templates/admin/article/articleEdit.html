@@ -11,15 +11,14 @@
 </head>
 <body>
 <div id="layout">
-    <input type="hidden" id="articleId" value="-1">
     <p align="center">标题：</p>
-    <input align="center" type="text" id="articleTitle">
+    <input align="center" type="text" id="articleTitle" th:value="${article.title}">
     <br/>
     <p align="center">简介</p>
-    <input align="center" type="text" id="articleDes">
+    <input align="center" type="text" id="articleDes" th:value="${article.description}">
 
     <div id="editorWindow">
-        <textarea style="display:none;" id="articleText"> </textarea>
+        <textarea style="display:none;" id="articleText" th:text="${article.content}"> </textarea>
     </div>
 </div>
 <script src="/vendor/jquery/jquery.min.js"></script>
