@@ -10,7 +10,6 @@ spring:
     multipart:
       max-file-size: 128KB
       max-request-size: 128KB
-
 debug: true
 
 

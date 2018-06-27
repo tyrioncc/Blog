@@ -8,11 +8,6 @@ $(document).ready(function() {
 }
 );
 
-var token = $("meta[name='_csrf']").attr("content");
-var header = $("meta[name='_csrf_header']").attr("content");
-$(document).ajaxSend(function(e, xhr, options) {
-    xhr.setRequestHeader(header, token);
-});
 
 var id = $("#articleId").val();
 
@@ -39,7 +34,7 @@ function saveButton(select) {
 
     //console.log(article);
     //console.log(JSON.stringify(article));
-    console.log(id);
+    //console.log(id);
     if (id > 0) {
         save(article, select);
     }

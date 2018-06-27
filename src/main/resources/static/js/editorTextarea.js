@@ -1,4 +1,5 @@
 var testEditor;
+
 $(function() {
     testEditor = editormd("editorWindow", {
         width   : "90%",
@@ -13,7 +14,7 @@ $(function() {
         //dialogMaskBgColor : "#000", // 设置透明遮罩层的背景颜色，全局通用，默认为 #fff
         imageUpload : true,
         imageFormats : ["jpg", "jpeg", "gif", "png", "bmp", "webp"],
-        imageUploadURL : "imageUpload"
+        imageUploadURL : "uploadImage"
 
         /*
          上传的后台只需要返回一个 JSON 数据，结构如下：
@@ -24,5 +25,4 @@ $(function() {
          }
          */
     });
-
 });
