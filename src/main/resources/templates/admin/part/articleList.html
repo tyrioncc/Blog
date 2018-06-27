@@ -35,7 +35,7 @@
                                         </form>
                                     </td>
                                     <td>
-                                        <form th:action="@{/home/articleDelete}"  method="post">
+                                        <form th:action="@{/home/delete}"  method="post">
                                             <input type="hidden" name="id" th:value="${article.id}" />
                                             <input type="submit" value="删除"/>
                                         </form>

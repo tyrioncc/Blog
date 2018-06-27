@@ -28,10 +28,10 @@ public interface ArticleService {
 
 
     /**
-     * 添加文章
+     * 添加文章，返回id
      * @param article 文章
      */
-    void addArticle(ArticleRecord article);
+    int addArticle(ArticleRecord article);
 
     /**
      * 保存文章

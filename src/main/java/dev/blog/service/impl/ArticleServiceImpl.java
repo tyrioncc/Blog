@@ -4,6 +4,7 @@ import dev.blog.service.ArticleService;
 import org.jooq.DSLContext;
 import org.jooq.Record;
 import org.jooq.Record1;
+import org.jooq.Result;
 import org.jooq.example.db.mysql.tables.records.ArticleRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -42,10 +43,11 @@ public class ArticleServiceImpl implements ArticleService {
     }
 
     @Override
-    public void addArticle(ArticleRecord article) {
-        create.insertInto(ARTICLE, ARTICLE.TITLE, ARTICLE.DESCRIPTION, ARTICLE.CONTENT, ARTICLE.CREATE_TIME)
+    public int addArticle(ArticleRecord article) {
+        Result<ArticleRecord> result = create.insertInto(ARTICLE, ARTICLE.TITLE, ARTICLE.DESCRIPTION, ARTICLE.CONTENT, ARTICLE.CREATE_TIME)
                 .values(article.getTitle(), article.getDescription(), article.getContent(), article.getCreateTime())
-                .execute();
+                .returning(ARTICLE.ID).fetch();
+        return result.getValue(0, ARTICLE.ID);
     }
 
     @Override
@@ -78,7 +80,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public void deleteArticleById(int id){
-        create.delete(ARTICLE).where(ARTICLE.ID.eq(id));
+        create.delete(ARTICLE).where(ARTICLE.ID.eq(id)).execute();
     }
 
 }

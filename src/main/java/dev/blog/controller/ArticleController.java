@@ -35,21 +35,23 @@ public class ArticleController {
     }
 
     @RequestMapping(value = "/home/articleEdit")
-    public String ArticleEdit(Model model, @RequestParam("id") int id){
-        ArticleRecord article = articleService.getArticleById(id);
+    public String ArticleEdit(Model model, @RequestParam("id") String id){
+        System.out.println("articleEdit, id:" + id);
+        ArticleRecord article = articleService.getArticleById(Integer.valueOf(id));
         model.addAttribute("article", article);
         return "admin/article/articleEdit";
     }
 
-    @RequestMapping(value = "/home/articleDelete")
-    public String ArticleDelete(Model model, @RequestParam("id") int id){
+    @RequestMapping(value = "/home/delete")
+    public String Delete(Model model, @RequestParam("id") int id){
+        //System.out.println(id);
         articleService.deleteArticleById(id);
-        List<ArticleRecord> list = articleService.getAvaliableArticleList(0, Integer.MAX_VALUE);
-        model.addAttribute("articleList", list);
-        return "admin/home";
+        //List<ArticleRecord> list = articleService.getAvaliableArticleList(0, Integer.MAX_VALUE);
+        //model.addAttribute("articleList", list);
+        return "redirect:/home";
     }
 
-    @RequestMapping(value = "home/add", method = RequestMethod.POST, consumes = "application/json")
+    @RequestMapping(value = "/home/add", method = RequestMethod.POST, consumes = "application/json")
     @ResponseBody
     public String Add(@RequestBody Map<String,String> map){
         //System.out.println(map.get("title"));
@@ -63,9 +65,9 @@ public class ArticleController {
             article.setUpdateTime(Timestamp.valueOf(map.get("updateTime")));
             article.setCreateTime(Timestamp.valueOf(map.get("updateTime")));
             article.setContent(map.get("content"));
-            articleService.addArticle(article);
-            System.out.println("articleService.addArticle(article);");
-            s = "{\"message\":\"add success\"}";
+            int id = articleService.addArticle(article);
+            System.out.println("addArticle, id:" + id);
+            s = "{\"message\":\"add success\",\"id\":\""+ id + "\"}";
         }
         catch (Exception e){
            e.printStackTrace();
@@ -74,7 +76,7 @@ public class ArticleController {
         return s;
     }
 
-    @RequestMapping(value = "home/save", method = RequestMethod.POST, consumes = "application/json")
+    @RequestMapping(value = "/home/save", method = RequestMethod.POST, consumes = "application/json")
     @ResponseBody
     public String Save(@RequestBody Map<String,String> map){
         //System.out.println(map.get("title"));
@@ -88,7 +90,7 @@ public class ArticleController {
             article.setContent(map.get("content"));
             int id = Integer.valueOf(map.get("id"));
             articleService.saveArticleById(article, id);
-            System.out.println("articleService.saveArticle(article);");
+            System.out.println("saveArticle, id:" + id);
             s = "{\"message\":\"save success\"}";
         }
         catch (Exception e){
