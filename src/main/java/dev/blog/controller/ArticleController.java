@@ -36,7 +36,7 @@ public class ArticleController {
 
     @RequestMapping(value = "/home/articleEdit")
     public String ArticleEdit(Model model, @RequestParam("id") String id){
-        System.out.println("articleEdit, id:" + id);
+        //System.out.println("articleEdit, id:" + id);
         ArticleRecord article = articleService.getArticleById(Integer.valueOf(id));
         model.addAttribute("article", article);
         return "admin/article/articleEdit";
@@ -66,7 +66,7 @@ public class ArticleController {
             article.setCreateTime(Timestamp.valueOf(map.get("updateTime")));
             article.setContent(map.get("content"));
             int id = articleService.addArticle(article);
-            System.out.println("addArticle, id:" + id);
+            //System.out.println("addArticle, id:" + id);
             s = "{\"message\":\"add success\",\"id\":\""+ id + "\"}";
         }
         catch (Exception e){
@@ -90,7 +90,7 @@ public class ArticleController {
             article.setContent(map.get("content"));
             int id = Integer.valueOf(map.get("id"));
             articleService.saveArticleById(article, id);
-            System.out.println("saveArticle, id:" + id);
+            //System.out.println("saveArticle, id:" + id);
             s = "{\"message\":\"save success\"}";
         }
         catch (Exception e){

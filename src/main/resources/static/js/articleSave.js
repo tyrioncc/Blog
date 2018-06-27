@@ -14,9 +14,9 @@ $(document).ajaxSend(function(e, xhr, options) {
     xhr.setRequestHeader(header, token);
 });
 
+var id = $("#articleId").val();
 
 function saveButton(select) {
-    var id = $("#articleId").val();
     var title = $("#articleTitle").val();
     var content = $("#articleText").val();
     var description = $("#articleDes").val();
@@ -57,21 +57,12 @@ function saveAndAdd(article, select) {
         contentType: "application/json",
         success:function (result) {
             alert("保存成功");
-            console.log(result);
+            //console.log(result);
             if(select === "r"){
                 window.location.href="/home";
             }
             else{
-                var form = document.createElement("form");
-                form.setAttribute("method", "post");
-                form.setAttribute("action", "/home/articleEdit");
-                var hiddenField = document.createElement("input");
-                hiddenField.setAttribute("type", "hidden");
-                hiddenField.setAttribute("name", "id");
-                hiddenField.setAttribute("value", result.id);
-                form.appendChild(hiddenField);
-                document.body.appendChild(form);
-                form.submit();
+                id = result.id;
             }
         },
         error:function(e) {
@@ -91,7 +82,7 @@ function save(article, select) {
         contentType: "application/json",
         success:function (result) {
             alert("保存成功");
-            console.log(result);
+            //console.log(result);
             if(select === "r"){
                 window.location.href="/home";
             }
@@ -99,7 +90,7 @@ function save(article, select) {
         error:function(e) {
             //出错时回调该函数
             alert("出错了");
-            console.log("ERROR : ", e);
+            //console.log("ERROR : ", e);
         }
     });
 }
