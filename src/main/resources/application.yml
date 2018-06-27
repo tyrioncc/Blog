@@ -6,6 +6,11 @@ spring:
     url: jdbc:mysql://localhost:3306/blogDB?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8&useSSL=false
   thymeleaf:
     cache: false
+  servlet:
+    multipart:
+      max-file-size: 128KB
+      max-request-size: 128KB
+
 debug: true
 
 
