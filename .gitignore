@@ -54,3 +54,6 @@ fabric.properties
 #upload
 upload-dir/
 file/
+
+#tomcat
+tomcat/
