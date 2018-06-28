@@ -22,7 +22,7 @@ public class FileController {
     @GetMapping("/file/{filename:.+}")
     @ResponseBody
     public ResponseEntity<Resource> serveFile(@PathVariable String filename) {
-        System.out.println("serveFile filename:" + filename);
+        //System.out.println("serveFile filename:" + filename);
         Resource file = fileService.loadAsResource(filename);
         return ResponseEntity.ok().header(HttpHeaders.CONTENT_DISPOSITION,
                 "attachment; filename=\"" + file.getFilename() + "\"").body(file);
