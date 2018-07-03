@@ -125,7 +125,7 @@
                     <!-- JDBC connection parameters -->
                     <jdbc>
                         <driver>com.mysql.jdbc.Driver</driver>
-                        <url>jdbc:mysql://localhost:3306/blogDB</url>
+                        <url>jdbc:mysql://localhost:3306/blogdb</url>
                         <user>root</user>
                         <password>Root</password>
                     </jdbc>
