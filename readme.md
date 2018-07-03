@@ -13,7 +13,7 @@
 - [editor.md(markdown编辑器)](https://github.com/pandao/editor.md)
 
 
-后台账户密码可以在`WebSecurityConfig`中修改
+`/home`进入文章管理页面，后台账户密码可以在`WebSecurityConfig`中修改
 
 ---
 

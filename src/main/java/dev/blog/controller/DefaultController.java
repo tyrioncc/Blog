@@ -47,6 +47,11 @@ public class DefaultController {
         return "admin/home";
     }
 
+    @RequestMapping("/about")
+    public String about(Model model){
+        return "blog/about";
+    }
+
     @RequestMapping("/login")
     public String login(Model model){
         return "admin/login";
